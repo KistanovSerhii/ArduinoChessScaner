@@ -1,18 +1,26 @@
+#define _OPEN_SYS_ITOA_EXT
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <SoftwareSerial.h>
 
 // Bluetooth name "CHESS_BOARD", pass 1234
 
 SoftwareSerial HC_05(10, 11); // RX | TX (D10, D11)
 
-unsigned long BoardSide1;  //A1 - первый бит, H4 - последний бит. 32 поля так как 4 байта.
-unsigned long BoardSide2;  //A5 - первый бит, H8 - последний бит. 32 поля так как 4 байта.
+unsigned int Multiplexer12 = 0xffff;  // Опрашивает линию 1-2. 16 полей так как 2 байта.
+unsigned int Multiplexer34 = 0;       // Опрашивает линию 3-4. 16 полей так как 2 байта.
+unsigned int Multiplexer56 = 0;       // Опрашивает линию 5-6. 16 полей так как 2 байта.
+unsigned int Multiplexer78 = 0xffff;  // Опрашивает линию 7-8. 16 полей так как 2 байта.
 
-// число 255 - это 1111 1111 (все поля первой вертикали заняты)
-
-int randNumber;
+uint64_t MultiplexersCommonData; // Результат опроса всей доски.
 
 byte outputData;
 byte inputData;
+
+// for test
+int randNumber;
+bool StartingPositionOfClassicalChess = true;
 
 void setup()
  {
@@ -20,9 +28,16 @@ void setup()
   Serial.begin(9600);
   HC_05.begin(9600);  //Default Baud for comm, it may be different for your Module. 
   Serial.println("The bluetooth is ready to pairing!");
-  
+
 }
- 
+
+void calculateMultiplexersCommonData(unsigned int multiplexer, int shift = 0) {
+    
+  MultiplexersCommonData |= multiplexer;
+  MultiplexersCommonData <<= shift;
+
+}
+
 void loop()
 {
 
@@ -38,9 +53,24 @@ void loop()
     inputStr.trim();
     if (inputStr == "test")
     {
-      randNumber = random(1, 25);      
-      sendDataForBluetooth(randNumber); // number is converting to byte and sending as char (alphabet) A = 1, B = 2, C = 3 ...;
+      sendRandomMultiplexersCommonDataForBluetooth();
     }
+
+    if (inputStr == "startposition")
+    {
+      Multiplexer12 = 65535;
+      Multiplexer34 = 0;
+      Multiplexer56 = 0;
+      Multiplexer78 = 65535;
+
+      calculateMultiplexersCommonData(Multiplexer12, 16);
+      calculateMultiplexersCommonData(Multiplexer34, 16);
+      calculateMultiplexersCommonData(Multiplexer56, 16);
+      calculateMultiplexersCommonData(Multiplexer78, 0);
+
+      sendbyteDataForBluetooth(MultiplexersCommonData);
+      MultiplexersCommonData = 0;
+    }    
     
   }
   
@@ -48,10 +78,36 @@ void loop()
   if (Serial.available())
   {
     outputData = Serial.read(); 
-    sendDataForBluetooth(outputData);
+    sendbyteDataForBluetooth(outputData);
   }
 }
 
-void sendDataForBluetooth(byte _data) {
+void sendbyteDataForBluetooth(byte _data) {
   HC_05.write(_data);
+}
+
+void sendCharsDataForBluetooth(char* _data) {
+  HC_05.write(_data);
+}
+
+void sendRandomMultiplexersCommonDataForBluetooth() {
+
+  Multiplexer12 = random(1, 65535);
+  Multiplexer34 = random(1, 65535);
+  Multiplexer56 = random(1, 65535);
+  Multiplexer78 = random(1, 65535);
+
+  calculateMultiplexersCommonData(Multiplexer12, 16);
+  calculateMultiplexersCommonData(Multiplexer34, 16);
+  calculateMultiplexersCommonData(Multiplexer56, 16);
+  calculateMultiplexersCommonData(Multiplexer78, 0);
+  
+  char buffer [sizeof(uint64_t)*8+1];
+
+  // convert number to array chars.
+  ultoa(MultiplexersCommonData, buffer, HEX);
+  
+  sendCharsDataForBluetooth(buffer);
+  MultiplexersCommonData = 0;
+
 }
