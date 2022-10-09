@@ -1,5 +1,5 @@
 # ArduinoChessScaner
-ArduinoChessScaner
+Arduino Chess Board Scaner
 
 Мультиплексор
 
