@@ -8,11 +8,14 @@
 
 # Ignore everything
 *
+flutter/*
 
 # But not these files...
 !.gitignore
 !README.md
-!pubspec.yaml
+!flutter/lib/README.md
+!flutter/lib/pubspec.yaml
 # and not this folder
-# !aDir/
-lib/*
+!arduino
+!flutter/lib/*
+
