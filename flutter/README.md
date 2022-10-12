@@ -4,9 +4,6 @@
 
 Для запуска приложения выполните:
 
-
-Для запуска приложения выполните:
-
     flutter pub get
     flutter pub get update
     flutter packages pub run build_runner build
@@ -23,3 +20,6 @@
 
 # ВАЖНО:
     Откройте проект повторно после указания sdk, переменные среды и т.д.
+
+Добавить разрешения bluetooth для android и ios:
+    см. плагин "flutter_blue"
