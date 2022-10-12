@@ -5,3 +5,14 @@
 *.scm~
 *.scm#*
 .#*.scm
+
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!README.md
+!pubspec.yaml
+# and not this folder
+# !aDir/
+lib/*
