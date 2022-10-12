@@ -2,7 +2,7 @@ import './request/get_day_body.dart';
 import './mapper/day_mapper.dart';
 import 'package:meta/meta.dart';
 import './service/sunrise_service.dart';
-import '../../../domain/model/day.dart';
+import '../../../domain/models/day.dart';
 
 class ApiUtil {
   final SunriseService _sunriseService;

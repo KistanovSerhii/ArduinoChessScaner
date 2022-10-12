@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:meta/meta.dart';
-import '../../repository/day_repository.dart';
-import '../../model/day.dart';
+import '../../repositories/day_repository.dart';
+import '../../models/day.dart';
 
 part 'home_state.g.dart';
 

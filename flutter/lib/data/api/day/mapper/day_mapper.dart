@@ -1,5 +1,5 @@
 import '../../../../data/api/day/model/api_day.dart';
-import '../../../../domain/model/day.dart';
+import '../../../../domain/models/day.dart';
 
 class DayMapper {
   static Day fromApi(ApiDay day) {

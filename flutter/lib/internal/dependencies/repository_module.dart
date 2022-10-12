@@ -1,5 +1,5 @@
-import '../../data/repository/day/day_data_repository.dart';
-import '../../domain/repository/day_repository.dart';
+import '../../data/repositories/day/day_data_repository.dart';
+import '../../domain/repositories/day_repository.dart';
 import './api_module.dart';
 
 import 'api_module.dart';
