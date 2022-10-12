@@ -11,3 +11,5 @@
 
 Можно передавать сигнал с аналогового входа на один из 16 пинов
 Можно передавать сигнал с одного из 16 пинов на аналоговый выход
+
+bluetooth example: https://github.com/lupyuen/flutter-blue-sample/blob/master/
