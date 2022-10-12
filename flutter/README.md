@@ -1,6 +1,4 @@
-# testapp1
-
-A new Flutter project.
+# Smart chess board
 
 ## Getting Started
 
