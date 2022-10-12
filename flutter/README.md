@@ -2,13 +2,24 @@
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Для запуска приложения выполните:
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Для запуска приложения выполните:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+    flutter pub get
+    flutter pub get update
+    flutter packages pub run build_runner build
+    flutter run
+
+# Для VS Code необходимо указать путь к dart sdk, flutter sdk, android sdk
+
+    dart sdk и flutter sdk указал в настройках VS code
+    android sdk указал через терминал vs code командой: flutter config --android-sdk path
+    
+    
+    dart sdk и flutter sdk - скачал с https://dart.dev/get-dart
+    android sdk - установил android studio
+
+# ВАЖНО:
+    Откройте проект повторно после указания sdk, переменные среды и т.д.
