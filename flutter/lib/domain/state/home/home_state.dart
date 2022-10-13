@@ -13,19 +13,19 @@ abstract class HomeStateBase with Store {
   final DayRepository _dayRepository;
 
   @observable
-  Day day;
+  Day? day;
 
   @observable
   bool isLoading = false;
 
   @action
   Future<void> getDay({
-    @required double latitude,
-    @required double longitude,
+    @required double? latitude,
+    @required double? longitude,
   }) async {
     isLoading = true;
     final data =
-        await _dayRepository.getDay(latitude: latitude, longitude: longitude);
+        await _dayRepository.getDay(latitude: latitude!, longitude: longitude!);
     day = data;
     isLoading = false;
   }

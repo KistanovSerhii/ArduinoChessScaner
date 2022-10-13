@@ -14,11 +14,11 @@ mixin _$HomeState on HomeStateBase, Store {
   @override
   Day get day {
     _$dayAtom.reportRead();
-    return super.day;
+    return super.day!;
   }
 
   @override
-  set day(Day value) {
+  set day(Day? value) {
     _$dayAtom.reportWrite(value, super.day, () {
       super.day = value;
     });
@@ -42,7 +42,8 @@ mixin _$HomeState on HomeStateBase, Store {
   final _$getDayAsyncAction = AsyncAction('HomeStateBase.getDay');
 
   @override
-  Future<void> getDay({@required double latitude, @required double longitude}) {
+  Future<void> getDay(
+      {@required double? latitude, @required double? longitude}) {
     return _$getDayAsyncAction
         .run(() => super.getDay(latitude: latitude, longitude: longitude));
   }

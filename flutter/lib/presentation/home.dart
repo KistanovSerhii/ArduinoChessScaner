@@ -12,7 +12,7 @@ class _HomeState extends State<Home> {
   final _latController = TextEditingController();
   final _lngController = TextEditingController();
 
-  HomeState _homeState;
+  HomeState? _homeState;
 
   @override
   void initState() {
@@ -80,19 +80,19 @@ class _HomeState extends State<Home> {
   Widget _getDayInfo() {
     return Observer(
       builder: (_) {
-        if (_homeState.isLoading)
+        if (_homeState!.isLoading)
           return Center(
             child: CircularProgressIndicator(),
           );
-        if (_homeState.day == null) return Container();
+        if (_homeState!.day == null) return Container();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Восход: ${_homeState.day.sunrise.toLocal()}'),
-            Text('Заход: ${_homeState.day.sunset.toLocal()}'),
-            Text('Полдень: ${_homeState.day.solarNoon.toLocal()}'),
+            Text('Восход: ${_homeState!.day.sunrise.toLocal()}'),
+            Text('Заход: ${_homeState!.day.sunset.toLocal()}'),
+            Text('Полдень: ${_homeState!.day.solarNoon.toLocal()}'),
             Text(
-                'Продолжительность: ${Duration(seconds: _homeState.day.dayLength)}'),
+                'Продолжительность: ${Duration(seconds: _homeState!.day.dayLength)}'),
           ],
         );
       },
@@ -103,6 +103,6 @@ class _HomeState extends State<Home> {
     // здесь получаем данные
     final lat = double.tryParse(_latController.text);
     final lng = double.tryParse(_lngController.text);
-    _homeState.getDay(latitude: lat, longitude: lng);
+    _homeState!.getDay(latitude: lat!, longitude: lng!);
   }
 }

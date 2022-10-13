@@ -5,8 +5,8 @@ class GetDayBody {
   final double longitude;
 
   GetDayBody({
-    @required this.latitude,
-    @required this.longitude,
+    required this.latitude,
+    required this.longitude,
   });
 
   Map<String, dynamic> toApi() {

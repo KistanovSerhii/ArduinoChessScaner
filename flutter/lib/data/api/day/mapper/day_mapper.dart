@@ -4,10 +4,18 @@ import '../../../../domain/models/day.dart';
 class DayMapper {
   static Day fromApi(ApiDay day) {
     return Day(
-      sunrise: DateTime.tryParse(day.sunrise),
-      sunset: DateTime.tryParse(day.sunset),
-      solarNoon: DateTime.tryParse(day.solarNoon),
+      sunrise: StringToDateTime(day.sunrise),
+      sunset: StringToDateTime(day.sunset),
+      solarNoon: StringToDateTime(day.solarNoon),
       dayLength: day.dayLength.toInt(),
     );
   }
+}
+
+DateTime StringToDateTime(String day) {
+  DateTime? dateValue;
+
+  dateValue = DateTime.tryParse(day);
+
+  return dateValue!;
 }

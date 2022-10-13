@@ -10,10 +10,10 @@ class ApiUtil {
   ApiUtil(this._sunriseService);
 
   Future<Day> getDay({
-    @required double latitude,
-    @required double longitude,
+    @required double? latitude,
+    @required double? longitude,
   }) async {
-    final body = GetDayBody(latitude: latitude, longitude: longitude);
+    final body = GetDayBody(latitude: latitude!, longitude: longitude!);
     final result = await _sunriseService.getDay(body);
     return DayMapper.fromApi(result);
   }

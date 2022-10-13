@@ -3,7 +3,7 @@ import '../../domain/repositories/day_repository.dart';
 import './api_module.dart';
 
 class RepositoryModule {
-  static DayRepository _dayRepository;
+  static DayRepository? _dayRepository;
 
   static DayRepository dayRepository() {
     if (_dayRepository == null) {
@@ -11,6 +11,6 @@ class RepositoryModule {
         ApiModule.apiUtil(),
       );
     }
-    return _dayRepository;
+    return _dayRepository!;
   }
 }
