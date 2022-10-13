@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import '../../../domain/state/home/home_state.dart';
-import '../../../internal/dependencies/home_module.dart';
+import '../domain/state/home/home_state.dart';
+import '../internal/dependencies/home_module.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
           children: [
             _getRowInput(),
             SizedBox(height: 20),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Получить'),
               onPressed: _getDay,
             ),

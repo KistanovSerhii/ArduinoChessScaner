@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../../../../data/api/day/model/api_day.dart';
-import '../../../../data/api/day/request/get_day_body.dart';
+import '../model/api_day.dart';
+import '../request/get_day_body.dart';
 
 class SunriseService {
   static const _BASE_URL = 'https://api.sunrise-sunset.org';

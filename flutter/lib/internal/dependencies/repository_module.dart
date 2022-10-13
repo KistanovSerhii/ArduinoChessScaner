@@ -2,8 +2,6 @@ import '../../data/repositories/day/day_data_repository.dart';
 import '../../domain/repositories/day_repository.dart';
 import './api_module.dart';
 
-import 'api_module.dart';
-
 class RepositoryModule {
   static DayRepository _dayRepository;
 

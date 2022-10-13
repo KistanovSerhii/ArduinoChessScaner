@@ -23,3 +23,12 @@
 
 Добавить разрешения bluetooth для android и ios:
     см. плагин "flutter_blue"
+
+После установки минимальной версии в android gradle необходимо - заменить класс gradle (там где будет ругаться):
+The latest Android SDK does not support GradleException(), instead use FileNotFoundException()
+
+, а также необходимо в android studio запустить менеджер sdk и установить "Android SDK Command-line Tools (latest)"
+затем перейти в проект и выполнить в терминал команду "flutter doctor --android-licenses"
+
+Для инициализации плагина bluetooth (flutter pub get update) необходимо выполнить инструкцию:
+https://kb.msp360.com/standalone-backup/general/a-required-privilege-is-not-held-by-client

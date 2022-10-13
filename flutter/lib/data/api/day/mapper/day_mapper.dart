@@ -1,4 +1,4 @@
-import '../../../../data/api/day/model/api_day.dart';
+import '../model/api_day.dart';
 import '../../../../domain/models/day.dart';
 
 class DayMapper {
